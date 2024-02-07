@@ -4,8 +4,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User, AuctionCategory, AuctionListing, Bids, Comments
+from .models import User, AuctionCategory, Products, Bids, Comments
 
+def products_view(request):
+    return render(request, "auctions/product.html")
 
 def index(request):
     return render(request, "auctions/index.html")
