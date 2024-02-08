@@ -6,16 +6,43 @@ from django.urls import reverse
 
 from .models import User, AuctionCategory, Products, Bids, Comments
 
-def products_view(request):
-    return render(request, "auctions/product.html")
+def addProduct(request):
+    products = Products.objects.all()
+    if request.method== "POST":
+        #Variaveis que vieram da requisição,
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        startingPrice = request.POST.get("startingPrice")
+        categories = request.POST.get("categories")
+        
+        #Criação do objeto no banco
+        newProduct= Products.objects.create(
+            title = title,
+            description = description,
+            startingPrice = startingPrice,
+            categories = categories
+        )
+        return HttpResponseRedirect(reverse(addProduct,args=(newProduct.id)))
+        
+        
+        
+    else:
+        return render(request, "auctions/addProduct.html", {"products": products})
+
+def products_view(request, product_id):
+    product = Products.objects.get(pk=product_id)
+    return render(request, "auctions/product.html", {
+        "product": product,
+    })
 
 def index(request):
-    return render(request, "auctions/index.html")
-
+    products = Products.objects.all()
+    return render(request, "auctions/index.html", {
+        "products": products,
+    })
 
 def login_view(request):
     if request.method == "POST":
-
         # Attempt to sign user in
         username = request.POST["username"]
         password = request.POST["password"]
@@ -32,11 +59,9 @@ def login_view(request):
     else:
         return render(request, "auctions/login.html")
 
-
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
-
 
 def register(request):
     if request.method == "POST":

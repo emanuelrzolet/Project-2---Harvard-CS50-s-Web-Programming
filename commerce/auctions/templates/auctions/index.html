@@ -2,6 +2,8 @@
 
 {% block body %}
     <h2>Active Listings</h2>
-
+    {% for product in products %}
+    <a href= {% url "product" products.id %}></a>
+    {% endfor %}
     TODO
 {% endblock %}

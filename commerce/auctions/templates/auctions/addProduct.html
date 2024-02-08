@@ -1,0 +1,18 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<h1>Add a new product</h1>
+
+<form action="{% url "addProduct" %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="title" id="title" placeholder="Title">
+    <input type="text" name="description" id="description" placeholder="Description">
+    <input type="number" name="startingPrice" id="startingPrice" placeholder="startingPrice">
+    <select name="categories" id="categories">Categories</select>
+    <option value=""></option>
+    <input type="submit" value="Add">
+</form>
+
+
+{% endblock body %}

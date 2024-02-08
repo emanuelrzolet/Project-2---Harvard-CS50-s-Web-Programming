@@ -21,8 +21,11 @@
                 <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
             </li>
             {% if user.is_authenticated %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'product' %}">Add a new Product</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'addProduct' %}">Add a product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'product' %}">View a product</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
