@@ -10,6 +10,6 @@ urlpatterns = [
     path("product", views.products_view, name="products"),
     #redenderização dos ids
     path("<int:product_id>",views.products_view, name="product"),
-    path('addProduct/<int:id>/', views.addProduct, name='addProduct'),
+    path('addProduct', views.addProduct, name='addProduct'),
 
 ]

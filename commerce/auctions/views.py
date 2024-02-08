@@ -30,7 +30,7 @@ def addProduct(request):
         newProduct.categories.set(categories)
         
         print(newProduct.id)
-        return HttpResponseRedirect(reverse("addProduct", args=[newProduct.id]))
+        return HttpResponseRedirect(reverse("addProduct"))
 
 
 
