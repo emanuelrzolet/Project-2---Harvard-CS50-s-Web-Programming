@@ -10,6 +10,7 @@
     <input type="text" name="description" id="description" placeholder="Description">
     <input type="number" name="startingPrice" id="startingPrice" placeholder="startingPrice">
     <select name="categories" id="categories">Categories</select>
+    {% for categorie in categories %}{% endfor %}
     <option value=""></option>
     <input type="submit" value="Add">
 </form>

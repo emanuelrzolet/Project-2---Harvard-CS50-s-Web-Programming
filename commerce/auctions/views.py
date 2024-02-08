@@ -13,7 +13,7 @@ def addProduct(request):
         title = request.POST.get("title")
         description = request.POST.get("description")
         startingPrice = request.POST.get("startingPrice")
-        categories = request.POST.get("categories")
+        categories = request.POST.getlist("categories")
         
         #Criação do objeto no banco
         newProduct= Products.objects.create(
@@ -22,6 +22,7 @@ def addProduct(request):
             startingPrice = startingPrice,
             categories = categories
         )
+        newProduct.categories.set(categories)
         return HttpResponseRedirect(reverse(addProduct,args=(newProduct.id)))
         
         
