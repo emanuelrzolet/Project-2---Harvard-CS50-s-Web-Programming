@@ -6,6 +6,16 @@ from django.urls import reverse
 
 from .models import User, AuctionCategory, Products, Bids, Comments
 
+def addCategory(request):
+    if request.method == "POST":
+        title = request.POST.get("categoryTitle")
+        newCategory = AuctionCategory.objects.create(
+            title = title
+        )
+        return HttpResponseRedirect(reverse("addProduct"))
+    else:
+        return render(request, "auctions/addCategory.html")
+
 def addProduct(request):
     products = Products.objects.all()
     if request.method== "POST":
@@ -22,20 +32,13 @@ def addProduct(request):
             startingPrice = startingPrice,
             
         )
-        
          # Obtendo as categorias com base nos IDs fornecidos
         categories = AuctionCategory.objects.filter(id__in=category_ids)
         
         # Atribuindo as categorias ao produto
         newProduct.categories.set(categories)
         
-        print(newProduct.id)
         return HttpResponseRedirect(reverse("addProduct"))
-
-
-
-        
-        
         
     else:
         categories = AuctionCategory.objects.all()
