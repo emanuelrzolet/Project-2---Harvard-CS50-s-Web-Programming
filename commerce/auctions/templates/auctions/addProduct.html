@@ -9,9 +9,13 @@
     <input type="text" name="title" id="title" placeholder="Title">
     <input type="text" name="description" id="description" placeholder="Description">
     <input type="number" name="startingPrice" id="startingPrice" placeholder="startingPrice">
-    <select name="categories" id="categories">Categories</select>
-    {% for categorie in categories %}{% endfor %}
-    <option value=""></option>
+    <select name="categories" id="categories">
+        <option value="">Categories</option>
+        {% for category in categories %}
+        <option value="{{ category.id }}">{{ category.title }}</option>
+        {% endfor %}
+    </select>
+    
     <input type="submit" value="Add">
 </form>
 

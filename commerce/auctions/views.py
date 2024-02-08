@@ -13,22 +13,35 @@ def addProduct(request):
         title = request.POST.get("title")
         description = request.POST.get("description")
         startingPrice = request.POST.get("startingPrice")
-        categories = request.POST.getlist("categories")
+        category_ids = request.POST.getlist("categories")
         
         #Criação do objeto no banco
         newProduct= Products.objects.create(
             title = title,
             description = description,
             startingPrice = startingPrice,
-            categories = categories
+            
         )
+        
+         # Obtendo as categorias com base nos IDs fornecidos
+        categories = AuctionCategory.objects.filter(id__in=category_ids)
+        
+        # Atribuindo as categorias ao produto
         newProduct.categories.set(categories)
-        return HttpResponseRedirect(reverse(addProduct,args=(newProduct.id)))
+        
+        print(newProduct.id)
+        return HttpResponseRedirect(reverse("addProduct", args=[newProduct.id]))
+
+
+
         
         
         
     else:
-        return render(request, "auctions/addProduct.html", {"products": products})
+        categories = AuctionCategory.objects.all()
+        return render(request, "auctions/addProduct.html", {
+            "products": products,
+            "categories": categories})
 
 def products_view(request, product_id):
     product = Products.objects.get(pk=product_id)
