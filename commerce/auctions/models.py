@@ -1,3 +1,4 @@
+from email.policy import default
 from unicodedata import category
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -14,6 +15,7 @@ class Products(models.Model):
     description = models.TextField(max_length=800)
     startingPrice = models.DecimalField(max_digits=100000, decimal_places=2)
     categories = models.ManyToManyField(AuctionCategory)
+    imageUrl = models.TextField(default="empty")
     
     
     pass

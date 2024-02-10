@@ -1,5 +1,8 @@
 {% extends "auctions/layout.html" %}
 {% block body %}
 
-<h2>teste</h2>
+<img src="{{product.imageUrl}}" alt="Image Missing" class="imageLink">
+<p>{{product.title}}</p>
+<p>Description: {{product.description}}</p>
+
 {% endblock body %}

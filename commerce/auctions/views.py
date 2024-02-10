@@ -24,12 +24,14 @@ def addProduct(request):
         description = request.POST.get("description")
         startingPrice = request.POST.get("startingPrice")
         category_ids = request.POST.getlist("categories")
+        imageUrl = request.POST.get("imageUrl")
         
         #Criação do objeto no banco
         newProduct= Products.objects.create(
             title = title,
             description = description,
             startingPrice = startingPrice,
+            imageUrl = imageUrl,
             
         )
          # Obtendo as categorias com base nos IDs fornecidos
@@ -50,6 +52,7 @@ def products_view(request, product_id):
     product = Products.objects.get(pk=product_id)
     return render(request, "auctions/product.html", {
         "product": product,
+        
     })
 
 def index(request):

@@ -3,7 +3,11 @@
 {% block body %}
     <h2>Active Listings</h2>
     {% for product in products %}
-    <a href="{% url 'product' product.id %}">{{ product.title }}</a>
+    <a href="{% url 'product' product.id %}">
+        
+        <img src="{{product.imageUrl}}" alt="Missing Image">
+        {{ product.title }}
+    <br></a>
 {% endfor %}
 
     TODO
