@@ -7,7 +7,6 @@ class User(AbstractUser):
 class AuctionCategory(models.Model):
     title = models.CharField(max_length=64)
 
-#Create Listing: Users should be able to visit a page to create a new listing. They should be able to specify a title for the listing, a text-based description, and what the starting bid should be. Users should also optionally be able to provide a URL for an image for the listing and/or a category (e.g. Fashion, Toys, Electronics, Home, etc.).
 class Products(models.Model):
     title = models.CharField(max_length=64)
     description = models.TextField(max_length=800)

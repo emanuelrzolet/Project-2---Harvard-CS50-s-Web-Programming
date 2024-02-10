@@ -5,6 +5,13 @@ from django.shortcuts import render
 from django.urls import reverse
 
 from .models import User, AuctionCategory, Products, Bids, Comments
+def addComment(request):
+    if request.method == "POST":
+        pass
+    else:
+        render(request, "auctions/product.html")
+def addBid(request):
+    pass
 
 def addCategory(request):
     if request.method == "POST":
