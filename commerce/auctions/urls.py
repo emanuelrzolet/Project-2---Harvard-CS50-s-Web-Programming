@@ -12,6 +12,6 @@ urlpatterns = [
     path("<int:product_id>",views.products_view, name="product"),
     path('addProduct', views.addProduct, name='addProduct'),
     path("addCategory", views.addCategory, name='addCategory'),
-    path("<int:product_id>/addComment", views.addComment, name='addComment')
+    path("addComment", views.addComment, name='addComment')
 
 ]

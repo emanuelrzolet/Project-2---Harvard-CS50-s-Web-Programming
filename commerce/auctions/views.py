@@ -9,7 +9,7 @@ def addComment(request):
     if request.method == "POST":
         pass
     else:
-        render(request, "auctions/product.html")
+        render(request, "auctions/.html")
 def addBid(request):
     pass
 
