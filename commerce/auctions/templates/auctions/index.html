@@ -1,14 +1,19 @@
 {% extends "auctions/layout.html" %}
-
 {% block body %}
     <h2>Active Listings</h2>
-    {% for product in products %}
-    <a href="{% url 'product' product.id %}">
-        
-        <img src="{{product.imageUrl}}" alt="Missing Image">
-        {{ product.title }}
-    <br></a>
-{% endfor %}
 
-    TODO
+    <div class="grid-container">
+        {% for product in products %}
+        <div class="product">
+            <a href="{% url 'product' product.id %}">
+                <img src="{{product.imageUrl}}" alt="Missing Image">
+                <span>
+                    <div><strong>{{product.title}}</strong></div>
+                    <div><strong>{{product.startingPrice}}</strong></div>
+                </span>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}

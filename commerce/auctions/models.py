@@ -14,6 +14,7 @@ class Products(models.Model):
     categories = models.ManyToManyField(AuctionCategory)
     imageUrl = models.TextField(default="empty")
     
+    
 
 
 class Bids(models.Model):
