@@ -59,7 +59,6 @@ def products_view(request, product_id):
     product = Products.objects.get(pk=product_id)
     return render(request, "auctions/product.html", {
         "product": product,
-        
     })
 
 def index(request):
